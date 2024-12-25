@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici İşlem</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Rota Oluşturma</h1>
+        <form method="POST" class="mt-4">
+            <!-- Şoför seçimi -->
+            <div class="mb-3">
+                <label for="soforID" class="form-label">Şoför Seç:</label>
+                <select class="form-select" id="soforID" name="soforID" required>
+                    <option value="">Şoför Seçiniz</option>
+                    {% for sofor in soforler %}
+                        <option value="{{ sofor.soforID }}">{{ sofor.soforID }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Yeni saat seçimi -->
+            <div class="mb-3">
+                <label for="yeniSaat" class="form-label">Yeni Saat Seç:</label>
+                <input type="time" id="yeniSaat" name="yeniSaat" class="form-control" required>
+            </div>
+
+            <!-- Uygun duraklar -->
+            <div class="mb-3">
+                <label for="duraklar" class="form-label">Uygun Duraklar:</label>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Gün</th>
+                            <th>Saat</th>
+                            <th>Durak Adı</th>
+                            <th>Katılan Öğrenci</th>
+                            <th>Seç</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gun, saat, durak_adi, katilan_ogrenci in katilim %}
+                            <tr>
+                                <td>{{ gun }}</td>
+                                <td>{{ saat }}</td>
+                                <td>{{ durak_adi }}</td>
+                                <td>{{ katilan_ogrenci }}</td>
+                                <td>
+                                    <input type="checkbox" name="selected_duraklar" 
+                                           value="{{ gun }},{{ durak_adi }}">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- İşlem butonu -->
+            <div class="text-center">
+                <button type="submit" name="action" value="RotaOlustur" class="btn btn-primary">Rota Oluştur</button>
+            </div>
+        </form>
+
+        <!-- Rota Listesi -->
+        <div class="mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Mevcut Rotalar</h2>
+                <form action="/Islemler/yonetici_islem" method="POST">
+                    <input type="hidden" name="action" value="rota_guncelle">
+                </form>
+            </div>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Gün</th>
+                        <th>Saat</th>
+                        <th>Durak</th>
+                        <th>Şoför</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rota in rotalar %}
+                        <tr>
+                            <td>{{ rota['gun'] }}</td>
+                            <td>{{ rota['saat'] }}</td>
+                            <td>{{ rota['durakID'] }}</td>
+                            <td>{{ rota['soforID'] }}</td>
+                            <td>
+                                <form action="/Islemler/yonetici_islem" method="POST" style="display: inline;">
+                                    <input type="hidden" name="action" value="rota_sil">
+                                    <input type="hidden" name="rotaID" value="{{ rota['rotaID'] }}">
+                                    <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                </form>
+                                <form action="/Islemler/yonetici_islem" method="POST" style="display: inline;">
+                                    <input type="hidden" name="action" value="rota_guncelle">
+                                    <input type="hidden" name="rotaID" value="{{ rota['rotaID'] }}">
+                                    <button type="submit" class="btn btn-warning btn-sm">Güncelle</button>
+                                </form>
+                                <form action="/Islemler/sofor_islem" method="POST" style="display: inline;">
+                                    <input type="hidden" name="gun" value="{{ rota['gun'] }}">
+                                    <input type="hidden" name="saat" value="{{ rota['saat'] }}">
+                                    <input type="hidden" name="durak" value="{{ rota['durakID'] }}">
+                                    <input type="hidden" name="sofor" value="{{ rota['soforID'] }}">
+                                    <button type="submit" class="btn btn-success btn-sm">Gönder</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

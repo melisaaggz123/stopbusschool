@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 1em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        header nav {
+            display: flex;
+            gap: 1em;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 4em 2em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2em;
+        }
+        .form-section {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            flex: 1;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        .form-section input,
+        .form-section textarea {
+            width: 100%;
+            padding: 0.75em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-section button {
+            width: 100%;
+            padding: 0.75em;
+            background-color: #2c2c2c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .form-section button:hover {
+            background-color: #444;
+        }
+        .contact-info {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            flex: 1;
+        }
+        .contact-info h3 {
+            margin-top: 0;
+        }
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Akıllı Okul Otobüsü</h1>
+    <nav>
+        <a href="../#">Anasayfa</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="form-section">
+        <h2>Mesajınızı Gönderin</h2>
+        <form action="/iletisim" method="POST">
+            <label for="adSoyad">Ad ve Soyad:</label>
+            <input type="text" id="adSoyad" name="adSoyad" required>
+            <label for="email">E-Posta:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="telefon">Telefon Numarası:</label>
+            <input type="tel" id="telefon" name="telefon" required>
+            <label for="mesaj">Mesaj:</label>
+            <textarea id="mesaj" name="mesaj" rows="5"></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+
+    <div class="contact-info">
+        <h3>İletişim Bilgilerimiz</h3>
+        <p>Destek ve bilgi almak için veya herhangi bir sorunuz olduğunda lütfen bizimle iletişim kurmaktan çekinmeyin.</p>
+        <p><strong>Adres:</strong> Kozyatağı Mahallesi Şehit İlknur Keleş Sokak Numara: 2 Kat: 7 Daire: 14 Kadıköy, İstanbul</p>
+        <p><strong>E-Posta:</strong> info@kodnova.com</p>
+        <p><strong>Telefon:</strong> +90 850 840 66 82</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Akıllı Okul Otobüsü Sistemi. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>

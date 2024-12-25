@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğretmen Kaydı</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 1em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        header nav {
+            display: flex;
+            gap: 1em;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 4em 2em;
+            text-align: center;
+        }
+        .register-form {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .register-form label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        .register-form input {
+            width: 100%;
+            padding: 0.75em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .register-form button {
+            width: 100%;
+            padding: 0.75em;
+            background-color: #2c2c2c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .register-form button:hover {
+            background-color: #444;
+        }
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Öğretmen Kaydı</h1>
+    <nav>
+        <a href="/">Anasayfa</a>
+        <a href="/Giris/ogretmen_giris">Öğretmen Girişi</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Kayıt Ol</h2>
+    <div class="register-form">
+        <form action="/Kayit/ogretmen_kayit" method="POST">
+            <label for="ogretmenID">Öğretmen ID:</label>
+            <input type="text" id="ogretmenID" name="ogretmenID" required>
+            <label for="sifre">Şifre:</label>
+            <input type="password" id="sifre" name="sifre" required>
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Kaydı Tamamla</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Akıllı Okul Otobüsü Sistemi. Tüm hakları saklıdır.</p>
+</footer>
+
+</body>
+</html>

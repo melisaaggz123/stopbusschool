@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Akıllı Okul Otobüsü</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Inline CSS -->
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.65;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        /* Navigation Bar Styles */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+            background: #333;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .left-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 1em;
+            font-weight: bold;
+        }
+
+        .left-menu a:hover {
+            color: #1abc9c;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 120px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .right-menu {
+            font-size: 1.2em;
+        }
+
+        .right-menu span {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Fullscreen Hero Section */
+        #hero {
+            background: url('https://newjerseymonitor.com/wp-content/uploads/2021/12/school-bus-2-1536x1152.jpg');
+            background-size: cover;
+            color: #000000;
+            text-align: center;
+            padding: 30em 1em;
+            position: relative;
+        }
+
+        #hero h1 {
+            font-size: 6em;
+            margin-bottom: 0.5em;
+            font-weight: 300;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        #hero p {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        #hero .buttons {
+            margin-top: 1em;
+        }
+
+        #hero .buttons a {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            margin: 0 0.5em;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        #hero .buttons a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Text Section with Image */
+        #text-section {
+            text-align: center;
+            background: #fff;
+            padding: 4em 2em;
+        }
+
+        #text-section h2 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        #text-section p {
+            font-size: 1em;
+            margin-bottom: 1em;
+            color: #666;
+        }
+
+        #text-section img {
+            width: 100%;
+            max-width: 800px;
+            margin: 2em auto 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2em;
+            max-width: 1000px;
+            margin: 2em auto;
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5em;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .feature:not(:last-child) {
+            margin-bottom: 2em;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            margin: 0 auto 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .feature:nth-child(1) .icon {
+            background: #f57c00;
+        }
+
+        .feature:nth-child(2) .icon {
+            background: #26a69a;
+        }
+
+        .feature:nth-child(3) .icon {
+            background: #7986cb;
+        }
+
+        .feature:nth-child(4) .icon {
+            background: #ffca28;
+        }
+
+        .feature h3 {
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        #footer {
+            background: #333;
+            color: #fff;
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        #footer a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+
+        #footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* New Footer Section */
+        .custom-footer {
+            background: #333;
+            color: #fff;
+            padding: 1em 1em;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .custom-footer .footer-section {
+            margin: 1em;
+            max-width: 300px;
+        }
+
+        .custom-footer h3 {
+            color: #FFD700;
+            margin-bottom: 1em;
+        }
+
+        .custom-footer p {
+            margin-bottom: 1em;
+        }
+
+        .custom-footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .custom-footer ul li {
+            margin-bottom: 0.5em;
+        }
+
+        .custom-footer ul li a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .custom-footer ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .custom-footer .contact-info {
+            color: #FFD700;
+        }
+
+        .custom-footer .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .custom-footer .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .custom-footer {
+            margin-top: 3em;
+            border-top: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="top-nav">
+        <div class="left-menu">
+            <a href="#">Anasayfa</a>
+            <div class="dropdown">
+                <a href="#">Giriş</a>
+                <div class="dropdown-content">
+                    <a href="Giris/ogrenci_giris">Öğrenci</a>
+                    <a href="Giris/ogretmen_giris">Öğretmen</a>
+                    <a href="Giris/sofor_giris">Şoför</a>
+                    <a href="Giris/yonetici_giris">Yönetici</a>
+
+                </div>
+            </div>
+            <div>
+                <a href="/iletisim">İletişim</a>
+            </div>
+            <div>
+                <a href="/hakkimizda">Hakkımızda</a>
+            </div>
+
+
+        </div>
+        <div class="right-menu">
+            <span>Akıllı Okul Otobüsü</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Akıllı Okul Otobüsü </h1>
+        <p>Yeni nesil okul otobüsü websitesine hoşgeldiniz.</p>
+    </section>
+
+    <!-- Text Section -->
+    <section id="text-section">
+        <h2>"Akıllı Yolculuk, Verimli Gelecek!"</h2>
+        <p>Yeni nesil okul otobüsü sistemi </p>
+    </section>
+    
+    
+    <!-- Features Section -->
+    <section id="main">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="icon"><i class="fas fa-bolt"></i></div>
+                <h3>Öğrenci Giriş</h3>
+                <p> Öğrenciler, kendi bilgilerini görüntüleyebilir ve otobüs hareketlerini takip edebilir</p>
+                <ul>
+                    <li>Güncel otobüs konumunu takip edebilme.</li>
+                    <li>Okul otobüsü saatlerini görüntüleme.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <div class="icon"><i class="fas fa-chart-area"></i></div>
+                <h3>Öğretmen Giriş</h3>
+                <p>Öğretmenler, öğrencilerin güvenli taşımacılığını takip edebilir ve otobüs detaylarına erişebilir.</p>
+                <ul>
+                    <li>Öğrenci listesini görüntüleme.</li>
+                    <li>Öğrenci bilgilerini güncelleme.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <div class="icon"><i class="fas fa-cloud"></i></div>
+                <h3>Yönetici Giriş</h3>
+                <p>Sistem yöneticileri, tüm kullanıcıları ve otobüs hareketlerini yönetir.</p>
+                <ul>
+                    <li>Öğrenci bilgilerini güncelleme.</li>
+                    <li>Öğrenci listesini görüntüleme.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <div class="icon"><i class="fas fa-lock"></i></div>
+                <h3>Şoför Giriş</h3>
+                <p> Şoförler, güzergahlarını ve öğrenci duraklarını takip eder.</p>
+                <ul>
+                    <li>Öğrenci listesini görüntüleme.</li>
+                    <li>Öğrenci bilgilerini güncelleme.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Footer -->
+    <div class="custom-footer">
+        <div class="footer-section">
+            <h3>Akıllı Okul Otobüsü</h3>
+            <p>Yeni nesil akıllı okul otobüsü sistemi 2024'den itibaren sizlere hizmet etmektedir.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Menü</h3>
+            <ul>
+                <li><a href="#">Anasayfa</a></li>
+                <li><a href="#">Giriş</a></li>
+                <li><a href="#">İletişim</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>İletişim</h3>
+            <p class="contact-info">
+                Büyükcami Mahallesi<br>
+                Edirne/Keşan<br>
+                +90 532 777 34 99<br>
+                <a href="mailto:info@akıllıotobus.com.tr">info@akıllıotobus.com.tr</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; Akıllı Okul Otobüsü 2024 Tüm Hakları ile saklıdır.</p>
+    </footer>
+</body>
+</html>

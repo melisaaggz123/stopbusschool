@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şoför İşlem</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: black;
+        }
+        header {
+            background-color: #2c2c2c;
+            color: #333;
+            padding: 1em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav {
+            background-color: black;
+            overflow: hidden;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+            color: black;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgb(14, 13, 13);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color:white;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button.katil {
+            background-color: #4CAF50;
+        }
+        button.katil:hover {
+            background-color: #45a049;
+        }
+        button.katilmiyorum {
+            background-color: #f44336;
+        }
+        button.katilmiyorum:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Şoför Rota Bilgileri</h1>
+    </header>
+
+    <nav>
+        <a href="/">Anasayfa</a>
+        <a href="/Giris/sofor_giris">Şofor Girişi</a>
+    </nav>
+
+    <div class="container">
+        <h2>Rota Bilgileri</h2>
+
+        {% if rotalar %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rota ID</th>
+                        <th>Gün</th>
+                        <th>Saat</th>
+                        <th>Durak</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rota in rotalar %}
+                        <tr>
+                            <td>{{ rota[0] }}</td>
+                            <td>{{ rota[1] }}</td>
+                            <td>{{ rota[2] }}</td>
+                            <td>{{ rota[3] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Bu şoföre atanmış bir rota bulunmamaktadır.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
